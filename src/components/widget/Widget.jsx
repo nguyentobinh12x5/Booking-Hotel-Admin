@@ -4,12 +4,23 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import useFetch from "../../hooks/useFetch";
 
 const Widget = ({ type }) => {
   let data;
-
+  let total;
+  const res = useFetch(`http://localhost:8800/${type}`);
+  const earning = 400;
+  //data
+  if (type === "user") {
+    total = res.data.length;
+  } else if (type === "transaction") {
+    total = res.data.length;
+    // res.data.reduce((acc, item) => acc + item.price, 0)
+  } else {
+    total = 0;
+  }
   //temporary
-  const amount = 100;
   const diff = 20;
 
   switch (type) {
@@ -29,7 +40,7 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "order":
+    case "transaction":
       data = {
         title: "ORDERS",
         isMoney: false,
@@ -83,7 +94,7 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {amount}
+          {data.isMoney && "$"} {type === "earning" ? earning : total}
         </span>
         <span className="link">{data.link}</span>
       </div>

@@ -5,6 +5,7 @@ import Widget from "../../components/widget/Widget";
 import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
 import Table from "../../components/table/Table";
+import WidgetEarning from "../../components/widget/WidgetEarning";
 
 const Home = () => {
   return (
@@ -14,17 +15,16 @@ const Home = () => {
         <Navbar />
         <div className="widgets">
           <Widget type="user" />
-          <Widget type="order" />
-          <Widget type="earning" />
-          <Widget type="balance" />
-        </div>
-        <div className="charts">
-          <Featured />
-          <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
+          <Widget type="transaction" />
+          <WidgetEarning />
         </div>
         <div className="listContainer">
           <div className="listTitle">Latest Transactions</div>
           <Table />
+        </div>
+        <div className="charts">
+          <Featured />
+          <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
         </div>
       </div>
     </div>
