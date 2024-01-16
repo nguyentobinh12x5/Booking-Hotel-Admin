@@ -2,7 +2,6 @@ import "./widget.scss";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import useFetch from "../../hooks/useFetch";
-
 const WidgetEarning = () => {
   const { data } = useFetch("http://localhost:8800/transaction");
   const amount = data.reduce((acc, item) => acc + item.price, 0);

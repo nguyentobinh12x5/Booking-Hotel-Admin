@@ -35,16 +35,17 @@ const Login = () => {
   return (
     <div className="login">
       <div className="lContainer">
+        <h3>You can login with this admin account</h3>
         <input
           type="text"
-          placeholder="email"
+          placeholder="admin@gmail.com"
           id="email"
           onChange={handleChange}
           className="lInput"
         ></input>
         <input
           type="password"
-          placeholder="password"
+          placeholder="Binhvtx5@"
           id="password"
           onChange={handleChange}
           className="lInput"

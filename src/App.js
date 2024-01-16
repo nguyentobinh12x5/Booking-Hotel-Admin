@@ -21,6 +21,7 @@ import {
 import Edit from "./pages/edit/Edit";
 import EditHotel from "./pages/editHotel/EditHotel";
 import EditRoom from "./pages/editRoom/EditRoom";
+import Logout from "./pages/logout/Logout";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   const ProtectedRoute = ({ children }) => {
@@ -36,6 +37,7 @@ function App() {
         <Routes>
           <Route path="/">
             <Route path="login" element={<Login />} />
+            <Route path="logout" element={<Logout />} />
             <Route
               index
               element={

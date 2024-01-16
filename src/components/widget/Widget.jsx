@@ -5,7 +5,7 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import useFetch from "../../hooks/useFetch";
-
+import { Link } from "react-router-dom";
 const Widget = ({ type }) => {
   let data;
   let total;
@@ -96,7 +96,9 @@ const Widget = ({ type }) => {
         <span className="counter">
           {data.isMoney && "$"} {type === "earning" ? earning : total}
         </span>
-        <span className="link">{data.link}</span>
+        <Link to={`${type}`} style={{ textDecoration: "none", color: "black" }}>
+          <span className="link">{data.link}</span>
+        </Link>
       </div>
       <div className="right">
         <div className="percentage positive">
