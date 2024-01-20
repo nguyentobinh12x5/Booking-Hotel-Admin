@@ -6,12 +6,13 @@ import { useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import Base_URL from "../../hooks/Base_URL";
 const EditHotel = () => {
   const [files, setFiles] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const id = location.pathname.split("/")[3];
-  const { data } = useFetch(`http://localhost:8800/hotel/find/${id}`);
+  const { data } = useFetch(`${Base_URL}/hotel/find/${id}`);
   const {
     name,
     title,
@@ -69,10 +70,7 @@ const EditHotel = () => {
         featured,
         ...(photos && { photos }),
       };
-      await axios.patch(
-        `http://localhost:8800/hotel/update/${id}`,
-        updateHotel
-      );
+      await axios.patch(`${Base_URL}/hotel/update/${id}`, updateHotel);
       navigate("/hotel");
     } catch (err) {
       console.error(err);

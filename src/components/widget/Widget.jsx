@@ -6,10 +6,11 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import useFetch from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
+import Base_URL from "../../hooks/Base_URL";
 const Widget = ({ type }) => {
   let data;
   let total;
-  const res = useFetch(`http://localhost:8800/${type}`);
+  const res = useFetch(`${Base_URL}/${type}`);
   const earning = 400;
   //data
   if (type === "user") {

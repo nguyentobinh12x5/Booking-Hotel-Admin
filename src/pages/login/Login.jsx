@@ -3,6 +3,7 @@ import "./Login.css";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Base_URL from "../../hooks/Base_URL";
 const Login = () => {
   const navigate = useNavigate();
   const [creadentials, setCredentials] = useState({
@@ -18,10 +19,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post(
-        "http://localhost:8800/auth/login",
-        creadentials
-      );
+      const res = await axios.post(`${Base_URL}/auth/login`, creadentials);
       if (res.data.isAdmin) {
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
         navigate("/");

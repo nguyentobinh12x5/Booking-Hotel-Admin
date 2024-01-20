@@ -5,19 +5,18 @@ import { useState, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import Base_URL from "../../hooks/Base_URL";
 const Datatable = ({ columns }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [list, setList] = useState([]);
-  const { data } = useFetch(`http://localhost:8800/${path}`);
+  const { data } = useFetch(`${Base_URL}/${path}`);
   useEffect(() => {
     setList(data);
   }, [data]);
   const checkHotelIntransaction = async (id) => {
     try {
-      const res = await axios.get(
-        `http://localhost:8800/transaction/hotel/${id}`
-      );
+      const res = await axios.get(`${Base_URL}/transaction/hotel/${id}`);
       if (res.data.length > 0) {
         return true;
       }
@@ -35,7 +34,7 @@ const Datatable = ({ columns }) => {
           alert("This hotel is in a transaction and cannot be deleted");
         } else {
           try {
-            await axios.delete(`http://localhost:8800/${path}/${id}`);
+            await axios.delete(`${Base_URL}/${path}/${id}`);
             setList(data.filter((item) => item._id !== id));
           } catch (err) {
             console.log(err);
@@ -46,7 +45,7 @@ const Datatable = ({ columns }) => {
       const confirmDelete = window.confirm("Are you sure to do this.");
       if (confirmDelete) {
         try {
-          await axios.delete(`http://localhost:8800/${path}/${id}`);
+          await axios.delete(`${Base_URL}/${path}/${id}`);
           setList(data.filter((item) => item._id !== id));
         } catch (err) {
           console.log(err);
@@ -54,7 +53,7 @@ const Datatable = ({ columns }) => {
       }
     } else {
       try {
-        await axios.delete(`http://localhost:8800/${path}/${id}`);
+        await axios.delete(`${Base_URL}/${path}/${id}`);
         setList(data.filter((item) => item._id !== id));
       } catch (err) {
         console.log(err);

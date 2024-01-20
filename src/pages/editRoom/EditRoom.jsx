@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import Base_URL from "../../hooks/Base_URL";
 const EditRoom = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,7 +36,7 @@ const EditRoom = () => {
         desc,
         roomNumbers,
       };
-      await axios.patch(`http://localhost:8800/room/update/${id}`, updateRoom);
+      await axios.patch(`${Base_URL}/room/update/${id}`, updateRoom);
       navigate("/room");
     } catch (err) {
       console.error(err);

@@ -6,12 +6,13 @@ import { useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import Base_URL from "../../hooks/Base_URL";
 const Edit = ({ title }) => {
   const [file, setFile] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const id = location.pathname.split("/")[3];
-  const { data } = useFetch(`http://localhost:8800/user/${id}`);
+  const { data } = useFetch(`${Base_URL}/user/${id}`);
   const { username, email, phoneNumber, fullname } = data;
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +47,7 @@ const Edit = ({ title }) => {
         ...(password && { password }),
         ...(img && { img }),
       };
-      await axios.patch(`http://localhost:8800/user/update/${id}`, updateUser);
+      await axios.patch(`${Base_URL}/user/update/${id}`, updateUser);
       navigate("/user");
     } catch (err) {
       console.error(err);

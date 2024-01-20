@@ -7,9 +7,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import useFetch from "../../hooks/useFetch";
+import Base_URL from "../../hooks/Base_URL";
 
 const List = () => {
-  const { data } = useFetch("http://localhost:8800/transaction");
+  const { data } = useFetch(`${Base_URL}/transaction`);
   const rows = data;
   return (
     <TableContainer component={Paper} className="table">

@@ -5,12 +5,13 @@ import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Base_URL from "../../hooks/Base_URL";
 
 const NewRoom = ({ inputs, title }) => {
   const [infor, setInfor] = useState({});
   const [hotelId, setHotelId] = useState(undefined);
   const [rooms, setRooms] = useState([]);
-  const { data, loading } = useFetch(`http://localhost:8800/hotel`);
+  const { data, loading } = useFetch(`${Base_URL}/hotel`);
   const navigate = useNavigate();
   const handleChange = (e) => {
     setInfor((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -26,7 +27,7 @@ const NewRoom = ({ inputs, title }) => {
       roomNumbers: roomNumbers,
     };
     try {
-      await axios.post(`http://localhost:8800/room/${hotelId}`, newRoom);
+      await axios.post(`${Base_URL}/room/${hotelId}`, newRoom);
       navigate("/room");
     } catch (err) {
       console.log(err);

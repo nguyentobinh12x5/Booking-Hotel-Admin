@@ -5,9 +5,10 @@ import "react-circular-progressbar/dist/styles.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import useFetch from "../../hooks/useFetch";
+import Base_URL from "../../hooks/Base_URL";
 
 const Featured = () => {
-  const { data } = useFetch("http://localhost:8800/transaction");
+  const { data } = useFetch(`${Base_URL}/transaction`);
   const amount = data.reduce((acc, item) => acc + item.price, 0);
   return (
     <div className="featured">

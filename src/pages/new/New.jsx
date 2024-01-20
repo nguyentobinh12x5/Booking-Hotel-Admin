@@ -5,6 +5,7 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Base_URL from "../../hooks/Base_URL";
 const New = ({ inputs, title }) => {
   const [file, setFile] = useState("");
   const [infor, setInfor] = useState({});
@@ -31,7 +32,7 @@ const New = ({ inputs, title }) => {
         img: url,
       };
       console.log(newUser);
-      await axios.post("http://localhost:8800/auth/register", newUser);
+      await axios.post(`${Base_URL}/auth/register`, newUser);
       navigate("/user");
     } catch (err) {
       console.error(err);
