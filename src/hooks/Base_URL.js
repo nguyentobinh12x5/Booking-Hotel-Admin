@@ -1,2 +1,2 @@
-const Base_URL = "https://booking-hotel-application-12377f0814a3.herokuapp.com";
+const Base_URL = "https://booking-hotel-api-u46x.onrender.com";
 export default Base_URL;
